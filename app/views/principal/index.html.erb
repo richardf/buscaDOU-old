@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-sm-3"></div>
+
+  <div class="col-sm-6">
+    <div class="page-header">
+      <h1 class="logo">Busca<span class="logo grey">DOU</span></h1>
+
+      <p class="tagline">Receba um alerta quando palavras do seu interesse aparecerem no Diário Oficial da União
+        (DOU)</p>
+    </div>
+  </div>
+
+  <div class="col-sm-3"></div>
+</div>
+
+<div class="row">
+  <div class="col-sm-3"></div>
+
+  <div class="col-sm-6">
+    <div class="alert alert-dismissible alert-info">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Cadastro realizado com sucesso!</strong> Verifique seu email para confirmar o cadastro e ativar o serviço.
+    </div>
+
+    <div class="alert alert-dismissible alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Ops, ocorreu um erro!</strong> O termo informado já está cadastrado.
+      <a href="#" class="alert-link">Enviar novo email de confirmação.</a>
+    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="searchTerm">Termo</label>
+        <input type="text" class="form-control" id="searchTerm" placeholder="Insira a palavra ou frase a ser vigiada" maxlength="100" aria-describedby="termHelpBlock" autofocus required>
+        <span id="termHelpBlock" class="help-block">O termo informado será pesquisado como uma frase.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="userEmail">Email</label>
+        <input type="email" class="form-control" id="userEmail" placeholder="Insira o seu email" maxlength="100" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Cadastrar termo</button>
+    </form>
+  </div>
+
+  <div class="col-sm-3"></div>
+</div>

@@ -28,19 +28,20 @@
       <a href="#" class="alert-link">Enviar novo email de confirmação.</a>
     </div>
 
-    <form>
+    <%= form_tag principal_path, method: "post" do %>
       <div class="form-group">
-        <label for="searchTerm">Termo</label>
-        <input type="text" class="form-control" id="searchTerm" placeholder="Insira a palavra ou frase a ser vigiada" maxlength="100" aria-describedby="termHelpBlock" autofocus required>
+        <%= label_tag :termo, "Termo" %>
+        <%= text_field_tag :termo, nil, class: "form-control", placeholder: "Insira a palavra ou frase a ser vigiada", required: true, autofocus: true, maxlength: 100 %>
         <span id="termHelpBlock" class="help-block">O termo informado será pesquisado como uma frase.</span>
       </div>
 
       <div class="form-group">
-        <label for="userEmail">Email</label>
-        <input type="email" class="form-control" id="userEmail" placeholder="Insira o seu email" maxlength="100" required>
+        <%= label_tag :email, "Email" %>
+        <%= text_field_tag :email, nil, class: "form-control", placeholder: "Insira o seu email", required: true, maxlength: 100 %>
       </div>
-      <button type="submit" class="btn btn-primary">Cadastrar termo</button>
-    </form>
+
+      <%= submit_tag "Cadastrar termo", class: "btn btn-primary"%>
+    <% end %>
   </div>
 
   <div class="col-sm-3"></div>

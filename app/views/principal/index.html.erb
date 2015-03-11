@@ -17,18 +17,9 @@
   <div class="col-sm-3"></div>
 
   <div class="col-sm-6">
-    <div class="alert alert-dismissible alert-info">
-      <button type="button" class="close" data-dismiss="alert">×</button>
-      <strong>Cadastro realizado com sucesso!</strong> Verifique seu email para confirmar o cadastro e ativar o serviço.
-    </div>
+    <div id="mensagens"></div>
 
-    <div class="alert alert-dismissible alert-danger">
-      <button type="button" class="close" data-dismiss="alert">×</button>
-      <strong>Ops, ocorreu um erro!</strong> O termo informado já está cadastrado.
-      <a href="#" class="alert-link">Enviar novo email de confirmação.</a>
-    </div>
-
-    <%= form_tag principal_path, method: "post" do %>
+    <%= form_tag principal_path, method: "post", remote: true do %>
       <div class="form-group">
         <%= label_tag :termo, "Termo" %>
         <%= text_field_tag :termo, nil, class: "form-control", placeholder: "Insira a palavra ou frase a ser vigiada", required: true, autofocus: true, maxlength: 100 %>

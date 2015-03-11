@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+$("#mensagens").html("<%=j render "alertadiv", mensagem: flash[:notice] %>");
+
+<% elsif flash[:error] %>
+$("#mensagens").html("<%=j render "alertadiv", tipo: "danger", mensagem: flash[:error] %>");
+
+<% end %>

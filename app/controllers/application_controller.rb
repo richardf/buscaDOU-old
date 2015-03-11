@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
       yield
     end
   end
+
+  def clear_flash
+    flash.discard if request.xhr?
+  end
 end

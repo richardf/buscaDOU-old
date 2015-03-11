@@ -6,8 +6,6 @@ class Termo < ActiveRecord::Base
 
   belongs_to :usuario
 
-  attr_accessor :conteudo
-
   def ativo?
     ativo
   end

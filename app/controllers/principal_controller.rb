@@ -7,13 +7,13 @@ class PrincipalController < ApplicationController
 
 
   def create
-    termo_cadastro = params.require(:termo)
-    usuario = Usuario.find_or_create_by!(email: params.require(:email))
+    termo_cadastro = params.require(:termo).downcase
+    usuario = Usuario.find_or_create_by!(email: params.require(:email).downcase)
     termo = Termo.find_by(conteudo: termo_cadastro, usuario: usuario)
 
     if termo.nil?
       Termo.create!(conteudo: termo_cadastro, usuario: usuario)
-      flash[:notice] = 'Cadastrado com sucesso!'
+      flash[:notice] = 'Cadastrado com sucesso! :-)'
     else
       if termo.ativo?
         flash[:error] = 'O termo informado já está cadastrado e ativo.'

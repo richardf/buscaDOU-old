@@ -13,12 +13,12 @@ class PrincipalController < ApplicationController
 
     if termo.nil?
       Termo.create!(conteudo: termo_cadastro, usuario: usuario)
-      flash[:notice] = "Cadastrado com sucesso!"
+      flash[:notice] = 'Cadastrado com sucesso!'
     else
       if termo.ativo?
-        flash[:error] = "O termo informado já está cadastrado e ativo."
+        flash[:error] = 'O termo informado já está cadastrado e ativo.'
       else
-        flash[:error] = "O termo informado já está cadastrado mas não foi ativado. Reenviar email de ativação."
+        flash[:error] = 'O termo informado já está cadastrado mas não foi ativado. Reenviar email de ativação.'
       end
     end
 

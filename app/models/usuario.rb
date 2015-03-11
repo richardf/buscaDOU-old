@@ -4,6 +4,8 @@ class Usuario < ActiveRecord::Base
 
   has_many :termos
 
+  attr_accessor :email
+
   def ativo?
     ativo
   end

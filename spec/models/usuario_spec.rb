@@ -21,5 +21,4 @@ RSpec.describe Usuario, type: :model do
     subject.email = 'email@valido.com'
     expect(subject.valid?).to be true
   end
-
 end

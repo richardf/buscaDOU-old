@@ -4,7 +4,5 @@ class Usuario < ActiveRecord::Base
 
   has_many :termos
 
-  def ativo?
-    ativo
-  end
+  alias_attribute :ativo?, :ativo
 end

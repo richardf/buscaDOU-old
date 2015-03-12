@@ -6,7 +6,5 @@ class Termo < ActiveRecord::Base
 
   belongs_to :usuario
 
-  def ativo?
-    ativo
-  end
+  alias_attribute :ativo?, :ativo
 end

@@ -12,7 +12,7 @@ class Termo < ActiveRecord::Base
 
   def ativar!
     self.ativo = true
-    save
+    save!
   end
 
   protected

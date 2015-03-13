@@ -22,7 +22,7 @@ RSpec.describe Termo, type: :model do
   end
 
   it 'deve poder ser ativado' do
-    allow(subject).to receive(:save).and_return(true)
+    allow(subject).to receive(:save!).and_return(true)
     expect{subject.ativar!}.to change { subject.ativo }.from(false).to(true)
   end
 

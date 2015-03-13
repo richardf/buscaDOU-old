@@ -10,4 +10,24 @@ RSpec.describe Termo, type: :model do
       expect(subject.ativo?).to be false
     end
   end
+
+  it 'nao deve ser valido sem o conteudo' do
+    subject.usuario = build(:usuario)
+    expect(subject.valid?).to be false
+  end
+
+  it 'nao deve ser valido sem o usuario' do
+    subject.conteudo = 'bla'
+    expect(subject.valid?).to be false
+  end
+
+  it 'deve poder ser ativado' do
+    allow(subject).to receive(:save).and_return(true)
+    expect{subject.ativar!}.to change { subject.ativo }.from(false).to(true)
+  end
+
+  it 'deve converter o termo para caixa baixa antes de salvar' do
+    subject.conteudo = 'AEI1'
+    expect{subject.send(:downcase_conteudo)}.to change { subject.conteudo }.to('aei1')
+  end
 end

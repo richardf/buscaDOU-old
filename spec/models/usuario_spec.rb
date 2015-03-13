@@ -21,4 +21,9 @@ RSpec.describe Usuario, type: :model do
     subject.email = 'email@valido.com'
     expect(subject.valid?).to be true
   end
+
+  it 'deve converter o email para caixa baixa antes de salvar' do
+    subject.email = 'MEU@EMAIL.COM'
+    expect{subject.send(:downcase_email)}.to change { subject.email }.to('meu@email.com')
+  end
 end

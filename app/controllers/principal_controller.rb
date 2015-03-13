@@ -1,5 +1,4 @@
 class PrincipalController < ApplicationController
-  around_action :create_transaction, only: :create
   after_action :clear_flash, only: [:create]
 
   def index
@@ -7,12 +6,9 @@ class PrincipalController < ApplicationController
 
 
   def create
-    termo_cadastro = params.require(:termo).downcase
-    usuario = Usuario.find_or_create_by!(email: params.require(:email).downcase)
-    termo = Termo.find_by(conteudo: termo_cadastro, usuario: usuario)
+    criado, termo = TermoCadastro.new(params.require(:email), params.require(:termo)).cadastrar
 
-    if termo.nil?
-      Termo.create!(conteudo: termo_cadastro, usuario: usuario)
+    if criado
       flash[:notice] = 'Cadastrado com sucesso! :-)'
     else
       if termo.ativo?

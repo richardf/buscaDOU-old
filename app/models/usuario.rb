@@ -5,4 +5,11 @@ class Usuario < ActiveRecord::Base
   has_many :termos
 
   alias_attribute :ativo?, :ativo
+
+  before_create :downcase_email
+
+  protected
+  def downcase_email
+    email.downcase!
+  end
 end

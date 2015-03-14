@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: "principal#index"
   post 'principal' => "principal#create"
 
+  get 'ativacao/:codigo' => 'ativacao#show', :as => 'ativacao'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

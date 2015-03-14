@@ -13,6 +13,7 @@ class TermoCadastro
       if termo.nil?
         termo = Termo.create!(conteudo: @termo_cadastro, usuario: usuario)
         criado = true
+        Ativacao.criar_codigo(termo)
       end
 
       return criado, termo

@@ -4,10 +4,15 @@ RSpec.describe Ativacao, type: :model do
 
   it { is_expected.to respond_to(:ativo?) }
 
-  it 'deve criar um codigo aleatorio para cada ativacao' do
-    expect(Ativacao.criar_codigo).to be_a_kind_of String
-    expect(Ativacao.criar_codigo.size).to be > 16
+
+  describe 'ao criar um codigo de ativacao' do
+    it 'deve gravar o codigo para o termo' do
+      termo = build(:termo, {id: 1})
+      expect(Ativacao).to receive(:create!).with(hash_including(:codigo, :termo))
+      Ativacao.criar_codigo(termo)
+    end
   end
+
 
   it 'nao deve ser valido sem o codigo' do
     subject.termo = build(:termo)

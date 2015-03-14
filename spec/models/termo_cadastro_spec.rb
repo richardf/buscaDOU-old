@@ -10,13 +10,13 @@ RSpec.describe TermoCadastro, type: :model do
     describe 'ao registrar' do
 
       it 'deve procurar o usuario pelo email desconsiderando caixa alta e baixa' do
-        expect(Usuario).to receive(:find_or_create_by!).with(hash_including(:email => 'um@email.com'))
+        expect(Usuario).to receive(:find_or_create_by!).with(hash_including(email: 'um@email.com'))
         subject.cadastrar
 
       end
 
       it 'deve procurar o termo pelo conteudo desconsiderando caixa alta e baixa' do
-        expect(Termo).to receive(:find_by).with(hash_including(:conteudo => 'foobar'))
+        expect(Termo).to receive(:find_by).with(hash_including(conteudo: 'foobar'))
         subject.cadastrar
       end
 
@@ -31,6 +31,17 @@ RSpec.describe TermoCadastro, type: :model do
         criado, termo = subject.cadastrar
         expect(criado).to be false
         expect(termo).to_not be_nil
+      end
+
+      it 'deve criar um registro de ativacao para o novo termo' do
+        allow(Termo).to receive(:find_by).and_return(nil)
+        expect(Ativacao).to receive(:criar_codigo).and_return(true)
+        subject.cadastrar
+      end
+
+      it 'nao deve criar um registro de ativacao se o termo ja existir' do
+        expect(Ativacao).to_not receive(:criar_codigo)
+        subject.cadastrar
       end
     end
 end

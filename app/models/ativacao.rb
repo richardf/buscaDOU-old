@@ -4,8 +4,8 @@ class Ativacao < ActiveRecord::Base
 
   belongs_to :termo
 
-  def self.criar_codigo
-    SecureRandom.hex
+  def self.criar_codigo(termo)
+    self.create!(codigo: SecureRandom.hex, termo: termo)
   end
 
   def ativar!

@@ -4,6 +4,8 @@ class Ativacao < ActiveRecord::Base
 
   belongs_to :termo
 
+  after_create :email_ativacao
+
   def self.criar_codigo(termo)
     self.create!(codigo: SecureRandom.hex, termo: termo)
   end
@@ -18,5 +20,9 @@ class Ativacao < ActiveRecord::Base
 
   def ativo?
     self.ativado_at != nil
+  end
+
+  def email_ativacao
+    TermoCadastroMailer.ativar_termo_email(termo.usuario.email, termo.conteudo, codigo).deliver_later
   end
 end

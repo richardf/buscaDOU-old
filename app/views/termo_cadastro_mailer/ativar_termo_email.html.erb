@@ -1,0 +1,11 @@
+<h1>BuscaDOU</h1>
+<p>Olá,</p>
+<p> Recentemente você cadastrou o termo <%= "\'#{@termo}\'" %> no BuscaDOU.
+  Para que possamos avisá-lo(a) quando este termo for citado no D.O.U., é necessário que você ative-o acessando o seguinte
+endereço: </p>
+<p>
+  <%= link_to nil, ativacao_url(@codigo) %>
+</p>
+<p>
+  Obrigado por utilizar o BuscaDOU!
+</p>

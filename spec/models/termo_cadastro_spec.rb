@@ -21,6 +21,7 @@ RSpec.describe TermoCadastro, type: :model do
       end
 
       it 'deve retornar verdadeiro e o termo se o termo nao existir' do
+        allow(Ativacao).to receive(:criar_codigo).and_return(true)
         allow(Termo).to receive(:find_by).and_return(nil)
         criado, termo = subject.cadastrar
         expect(criado).to be true

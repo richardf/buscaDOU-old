@@ -11,6 +11,11 @@ RSpec.describe Ativacao, type: :model do
       expect(Ativacao).to receive(:create!).with(hash_including(:codigo, :termo))
       Ativacao.criar_codigo(termo)
     end
+
+    it 'deve enviar um email de ativacao' do
+      termo = create(:termo_com_usuario)
+      expect{Ativacao.criar_codigo(termo)}.to change {ActionMailer::Base.deliveries.size}.by 1
+    end
   end
 
 

@@ -18,7 +18,6 @@ RSpec.describe Ativacao, type: :model do
     end
   end
 
-
   it 'nao deve ser valido sem o codigo' do
     subject.termo = build(:termo)
     expect(subject.valid?).to be false

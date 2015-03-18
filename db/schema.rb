@@ -11,18 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313014141) do
-
-  create_table "ativacoes", force: :cascade do |t|
-    t.string   "codigo",     null: false
-    t.integer  "termo_id"
-    t.datetime "ativado_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "ativacoes", ["codigo"], name: "index_ativacoes_on_codigo"
-  add_index "ativacoes", ["termo_id"], name: "index_ativacoes_on_termo_id"
+ActiveRecord::Schema.define(version: 20150318222851) do
 
   create_table "termos", force: :cascade do |t|
     t.string   "conteudo",                   null: false
@@ -30,9 +19,11 @@ ActiveRecord::Schema.define(version: 20150313014141) do
     t.integer  "usuario_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "codigo",                     null: false
   end
 
   add_index "termos", ["ativo"], name: "index_termos_on_ativo"
+  add_index "termos", ["codigo"], name: "index_termos_on_codigo"
   add_index "termos", ["usuario_id"], name: "index_termos_on_usuario_id"
 
   create_table "usuarios", force: :cascade do |t|

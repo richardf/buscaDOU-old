@@ -8,7 +8,9 @@ class Termo < ActiveRecord::Base
 
   alias_attribute :ativo?, :ativo
 
-  before_create :downcase_conteudo
+  before_create :downcase_conteudo, :codigo_ativacao
+  after_create :email_ativacao
+
 
   def ativar!
     self.ativo = true
@@ -18,5 +20,13 @@ class Termo < ActiveRecord::Base
   protected
   def downcase_conteudo
     conteudo.downcase!
+  end
+
+  def codigo_ativacao
+    self.codigo = SecureRandom.hex
+  end
+
+  def email_ativacao
+    TermoCadastroMailer.ativar_termo_email(usuario.email, conteudo, codigo).deliver_later
   end
 end

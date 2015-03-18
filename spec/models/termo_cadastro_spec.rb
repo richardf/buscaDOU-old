@@ -21,7 +21,6 @@ RSpec.describe TermoCadastro, type: :model do
       end
 
       it 'deve retornar verdadeiro e o termo se o termo nao existir' do
-        allow(Ativacao).to receive(:criar_codigo).and_return(true)
         allow(Termo).to receive(:find_by).and_return(nil)
         criado, termo = subject.cadastrar
         expect(criado).to be true
@@ -32,17 +31,6 @@ RSpec.describe TermoCadastro, type: :model do
         criado, termo = subject.cadastrar
         expect(criado).to be false
         expect(termo).to_not be_nil
-      end
-
-      it 'deve criar um registro de ativacao para o novo termo' do
-        allow(Termo).to receive(:find_by).and_return(nil)
-        expect(Ativacao).to receive(:criar_codigo).and_return(true)
-        subject.cadastrar
-      end
-
-      it 'nao deve criar um registro de ativacao se o termo ja existir' do
-        expect(Ativacao).to_not receive(:criar_codigo)
-        subject.cadastrar
       end
     end
 end

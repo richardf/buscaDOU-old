@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Principal', type: :feature do
+RSpec.describe 'Ativacao', type: :feature do
 
   describe 'ao acessar link de validacao com codigo inexistente' do
     let!(:visit_inexistente) { visit ativacao_path('aaaa0000') }
@@ -16,8 +16,8 @@ RSpec.describe 'Principal', type: :feature do
 
 
   describe 'ao acessar link de validacao com codigo existente' do
-    let!(:ativacao) { create(:ativacao_com_termo, {codigo: 'foofoofoo'}) }
-    let!(:visit_existente) { visit ativacao_path('foofoofoo') }
+    let!(:termo) { create(:termo_com_codigo) }
+    let!(:visit_existente) { visit ativacao_path(termo.codigo) }
 
     it 'deve retornar status ok' do
       expect(page).to have_http_status(200)

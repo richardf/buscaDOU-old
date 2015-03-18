@@ -2,7 +2,7 @@ class Termo < ActiveRecord::Base
   scope :ativos, -> { where(ativo: true) }
 
   validates :usuario, presence: true
-  validates :conteudo, uniqueness: {:scope => :usuario}, presence: true
+  validates :conteudo, uniqueness: {:scope => :usuario}, presence: true, length: { in: 4..100 }
 
   belongs_to :usuario
 

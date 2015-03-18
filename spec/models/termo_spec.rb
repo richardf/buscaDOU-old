@@ -40,6 +40,25 @@ RSpec.describe Termo, type: :model do
       subject.conteudo = 'AEI1'
       expect{subject.send(:downcase_conteudo)}.to change { subject.conteudo }.to('aei1')
     end
+
+    it 'deve dar erro ao cadastrar conteudo de mais de 100 caracteres' do
+
+    end
+
+    it 'deve dar erro ao cadastrar conteudo de menos de 4 caracteres' do
+      termo = build(:termo_com_codigo)
+      termo.conteudo = 'abc'
+      termo.valid?
+      expect(termo.errors.messages[:conteudo]).to include(/is too short/)
+    end
+
+    it 'deve dar erro ao cadastrar conteudo com mais de 100 caracteres' do
+      termo = build(:termo_com_codigo)
+      termo.conteudo = 'a' * 101
+      termo.valid?
+      expect(termo.errors.messages[:conteudo]).to include(/is too long/)
+    end
+
   end
 
   describe 'ao ativar o termo' do

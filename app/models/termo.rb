@@ -17,6 +17,11 @@ class Termo < ActiveRecord::Base
     save!
   end
 
+  def desativar!
+    self.ativo = false
+    save!
+  end
+
   protected
   def downcase_conteudo
     conteudo.downcase!

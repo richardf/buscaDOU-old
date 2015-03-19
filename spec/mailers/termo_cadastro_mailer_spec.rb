@@ -17,7 +17,7 @@ RSpec.describe TermoCadastroMailer, type: :mailer do
     end
 
     it 'deve incluir o link de confirmacao no email' do
-      expect(email.body.encoded).to include 'http://buscadou.com/ativacao/XXXXXX'
+      expect(email.body.encoded).to include 'http://buscadou.com/ativar/XXXXXX'
     end
   end
 end

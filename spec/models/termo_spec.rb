@@ -61,11 +61,22 @@ RSpec.describe Termo, type: :model do
 
   end
 
+
   describe 'ao ativar o termo' do
 
     it 'deve alterar a flag de ativo' do
       allow(subject).to receive(:save!).and_return(true)
       expect{subject.ativar!}.to change { subject.ativo }.from(false).to(true)
+    end
+  end
+
+
+  describe 'ao desativar o termo' do
+    let(:termo_ativo) { create(:termo_com_codigo, ativo: true) }
+
+    it 'deve alterar a flag para inativo' do
+      allow(termo_ativo).to receive(:save!).and_return(true)
+      expect{termo_ativo.desativar!}.to change { termo_ativo.ativo }.from(true).to(false)
     end
   end
 end

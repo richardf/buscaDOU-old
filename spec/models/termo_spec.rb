@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Termo, type: :model do
   it { is_expected.to respond_to(:ativo?) }
+  it { is_expected.to respond_to(:usuario) }
+  it { is_expected.to respond_to(:conteudo) }
 
   describe 'ao ser criado' do
     it { is_expected.not_to be_valid }

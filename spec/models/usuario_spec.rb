@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Usuario, type: :model do
 
   it { is_expected.to respond_to(:ativo?) }
+  it { is_expected.to respond_to(:email) }
+  it { is_expected.to respond_to(:termos) }
 
   describe 'ao ser criado' do
     it { is_expected.not_to be_valid }

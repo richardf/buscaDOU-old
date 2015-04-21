@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe TermoCadastro, type: :model do
+    subject { TermoCadastro.new('um@EMAIL.com', 'FooBar') }
 
-    let(:subject) { TermoCadastro.new('um@EMAIL.com', 'FooBar') }
+    it { is_expected.to respond_to(:cadastrar) }
+
+
     let!(:termo_find) { allow(Termo).to receive(:find_by).and_return(build(:termo)) }
     let!(:termo_create) { allow(Termo).to receive(:create!).and_return(build(:termo)) }
     let!(:usuario_find) { allow(Usuario).to receive(:find_or_create_by!).and_return(build(:usuario)) }

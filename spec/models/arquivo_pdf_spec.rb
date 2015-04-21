@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe ArquivoPDF, type: :model do
   subject {ArquivoPDF.new('spec/data/dou.pdf')}
 
+  it { is_expected.to respond_to(:texto) }
+  it { is_expected.to respond_to(:numero_paginas) }
+
+
   context 'arquivo inexistente' do
     it 'deve lancar excecao' do
       expect{ ArquivoPDF.new('spec/nao_existe.pdf') }.to raise_error

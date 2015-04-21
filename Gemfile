@@ -36,6 +36,8 @@ gem 'turbolinks'
 gem 'sidekiq'
 gem 'sinatra', :require => nil #sidekiq console
 gem 'pdf-toolkit'
+gem 'elasticsearch-persistence'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

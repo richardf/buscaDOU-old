@@ -1,0 +1,16 @@
+------------
+* BuscaDOU *
+------------
+
+Olá,
+
+Termos de seu interesse foram encontrados no DOU de <%= @ocorrencias[0][:data].strftime('%d/%m/%Y') %>
+
+
+<% @ocorrencias.each do |ocorr| %>
+* <%= ocorr[:destaque] %> (Página: <%= ocorr[:pagina] %> / Seção: <%= ocorr[:secao] %>)
+
+<% end %>
+
+
+Obrigado por utilizar o BuscaDOU!

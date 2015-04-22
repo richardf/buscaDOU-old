@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe TermoCadastroMailer, type: :mailer do
-  let(:subject) { TermoCadastroMailer }
+  subject { TermoCadastroMailer }
 
   describe 'ao enviar o email de confirmacao de cadastro' do
     let!(:email) { email = subject.ativar_termo_email('foo@bar.com', 'o termo', 'XXXXXX').deliver_now }

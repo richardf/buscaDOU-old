@@ -10,6 +10,8 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'sidekiq/testing'
+require 'rake'
+require 'elasticsearch/extensions/test/cluster/tasks'
 
 Sidekiq::Testing.inline!
 
@@ -49,10 +51,18 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-
   config.before(:each) do
     Sidekiq::Worker.clear_all
   end
+
+  config.before :all, elasticsearch: true do
+    Elasticsearch::Extensions::Test::Cluster.start(port: 9200, nodes: 1) unless Elasticsearch::Extensions::Test::Cluster.running? on: 9200
+  end
+
+  config.after :suite do
+    Elasticsearch::Extensions::Test::Cluster.stop(port: 9200) if Elasticsearch::Extensions::Test::Cluster.running? on: 9200
+  end
+
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

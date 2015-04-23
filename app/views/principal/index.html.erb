@@ -1,7 +1,6 @@
 <div class="row">
-  <div class="col-sm-3"></div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
     <div class="page-header">
       <h1 class="logo">Busca<span class="logo grey">DOU</span></h1>
 
@@ -9,14 +8,10 @@
         (DOU)</p>
     </div>
   </div>
-
-  <div class="col-sm-3"></div>
 </div>
 
 <div class="row">
-  <div class="col-sm-3"></div>
-
-  <div class="col-sm-6">
+  <div class="col-sm-6 col-sm-offset-3 col-xs-12 col-xs-offset-0">
     <div id="mensagens"></div>
 
     <%= form_tag principal_path, method: "post", remote: true do %>
@@ -34,6 +29,4 @@
       <%= submit_tag "Cadastrar termo", class: "btn btn-primary"%>
     <% end %>
   </div>
-
-  <div class="col-sm-3"></div>
 </div>
